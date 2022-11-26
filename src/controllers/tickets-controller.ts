@@ -15,7 +15,7 @@ export async function getTicketTypes(req: AuthenticatedRequest, res: Response) {
 
 export async function getTickets(req: AuthenticatedRequest, res: Response) {
   const { userId } = req;
-
+  
   try {
     const ticketTypes = await ticketService.getTicketByUserId(userId);
 
