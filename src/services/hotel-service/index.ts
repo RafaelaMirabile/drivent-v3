@@ -32,6 +32,10 @@ async function getHotels(userId: number) {
   await verifyEnrollmentAndTicekt(userId);
 
   const hotels = await hotelRepository.findHotels();
+  
+  if (hotels.length === 0) {
+    return [];
+  }
   return hotels;
 }
 

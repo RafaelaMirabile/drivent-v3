@@ -59,7 +59,7 @@ describe("GET /hotels", () => {
       const response = await server.get("/hotels").set("Authorization", `Bearer ${token}`);
       expect(response.status).toBe(httpStatus.UNAUTHORIZED);
     });
-    
+
     it("should respond with status 401 when enrollment exist and there is no accommodation included or no paid out ticket", async () => {
       const user = await createUser();
       const token = await generateValidToken(user);
@@ -81,6 +81,7 @@ describe("GET /hotels", () => {
       const response = await server.get("/hotels").set("Authorization", `Bearer ${token}`);
 
       expect(response.status).toBe(httpStatus.OK);
+      expect(response.body).toEqual([]);
     });
 
     it("should respond with status 200 when enrollmet exist and accommodation is included and ticket is paid", async () => {

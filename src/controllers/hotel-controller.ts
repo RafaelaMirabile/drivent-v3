@@ -8,9 +8,6 @@ export async function getHotels(req: AuthenticatedRequest, res: Response) {
     const { userId } = req;
     const hotelList = await hotelService.getHotels(userId);
 
-    if (hotelList.length === 0) {
-      return res.status(httpStatus.OK).send([]);
-    }
     return res.status(httpStatus.OK).send(hotelList);
   } catch (error) {
     if (error.name === "UnauthorizedError") {
